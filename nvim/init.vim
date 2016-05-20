@@ -17,8 +17,9 @@ Plug 'othree/html5.vim'
 Plug 'lepture/vim-jinja'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'cespare/vim-toml'
-Plug 'dag/vim2hs'
 Plug 'pbrisbin/vim-syntax-shakespeare'
+Plug 'neovimhaskell/haskell-vim'
+Plug 'eagletmt/neco-ghc'
 
 Plug 'scrooloose/syntastic'
 
