@@ -22,6 +22,7 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'eagletmt/neco-ghc'
 
 Plug 'scrooloose/syntastic'
+Plug 'dracula/vim'
 
 function! DoRemote(arg)
   UpdateRemotePlugins
@@ -76,8 +77,7 @@ set directory=/tmp
 set colorcolumn=80
 set clipboard=unnamed
 
-let g:seoul256_background = 236
-color seoul256
+color dracula
 
 set guifont=Source\ Code\ Pro\ for\ Powerline:h14
 
