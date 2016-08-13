@@ -19,16 +19,15 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'cespare/vim-toml'
 Plug 'pbrisbin/vim-syntax-shakespeare'
 
-"Plug 'neovimhaskell/haskell-vim'
-Plug 'dag/vim2hs'
-
 Plug 'scrooloose/syntastic'
 Plug 'dracula/vim'
 
 function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
-"Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 call plug#end()
 
@@ -68,6 +67,7 @@ color dracula
 set guifont=Source\ Code\ Pro\ for\ Powerline:h14
 
 noremap <silent> nh :noh<CR>
+noremap <silent> tt :F<CR>
 
 let g:deoplete#enable_at_startup = 1
 
