@@ -1,9 +1,11 @@
 set nocompatible
 
 call plug#begin('~/.config/nvim/plugged')
-"Plug 'junegunn/seoul256.vim'
-
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 Plug 'tpope/vim-fugitive'
 Plug 'rhysd/committia.vim'
@@ -19,13 +21,15 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'cespare/vim-toml'
 Plug 'pbrisbin/vim-syntax-shakespeare'
 
-Plug 'scrooloose/syntastic'
-Plug 'dracula/vim'
+"Plug 'dracula/vim'
+"Plug 'junegunn/seoul256.vim'
+Plug 'altercation/vim-colors-solarized'
 
-function! DoRemote(arg)
-  UpdateRemotePlugins
-endfunction
+Plug 'scrooloose/syntastic'
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'zchee/deoplete-jedi'
+Plug 'eagletmt/neco-ghc'
+Plug 'simnalamburt/vim-mundo'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
@@ -33,6 +37,10 @@ call plug#end()
 
 filetype plugin indent on
 syntax on
+
+" Color configuration
+set bg=light
+color solarized
 
 set tabstop=2 shiftwidth=2 softtabstop=2 modeline
 set fileformat=unix backspace=2
@@ -48,31 +56,26 @@ au FileType sql         setl ts=2 sw=2 sts=2
 au FileType javascript  setl ts=2 sw=2 sts=2
 au FileType python      setl ts=4 sw=4 sts=4
 au FileType haskell     setl ts=8 sw=4 sts=4
+au FileType make        setl noet
 
-au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm set ft=jinja
 set laststatus=2
 
 command E Explore
 
 set noeb vb t_vb=
-autocmd GUIEnter * set vb t_vb=
 
 let g:airline_powerline_fonts=1
 
 set directory=/tmp
 set colorcolumn=80
 
-color dracula
-
-set guifont=Source\ Code\ Pro\ for\ Powerline:h14
-
 noremap <silent> nh :noh<CR>
 noremap <silent> tt :F<CR>
+nnoremap <F5> :MundoToggle<CR>
 
 let g:deoplete#enable_at_startup = 1
 
 inoremap <expr> <Tab> ((pumvisible())?("\<C-n>"):("<Tab>"))
-
 
 "Keep 80 columns.
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
@@ -85,7 +88,6 @@ match ExtraWhitespace /\s\+\%#\@<!$/
 match ExtraWhitespace2 /\s\+\%#/
 autocmd WinEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd WinEnter * match ExtraWhitespace2 /\s\+\%#/
-autocmd InsertChange * match ExtraWhitespace2 /\s\+\%#/
 autocmd InsertLeave * match ExtraWhitespace /\s\+\%#\@<!$/
 
 "Haskell-related config
@@ -105,3 +107,10 @@ let g:haskell_conceal              = 0
 " deriving clauses and LANGUAGE pragmas,
 " otherwise collapsed into a single ellipsis
 let g:haskell_conceal_enumerations = 0
+
+set clipboard=unnamed
+set nofoldenable
+
+" nirum configuraiton
+au BufNewFile,BufRead *.nrm set filetype=nirum
+au FileType nirum       setl ts=4 sw=4 sts=4
