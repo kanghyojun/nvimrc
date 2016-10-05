@@ -114,3 +114,8 @@ set nofoldenable
 " nirum configuraiton
 au BufNewFile,BufRead *.nrm set filetype=nirum
 au FileType nirum       setl ts=4 sw=4 sts=4
+
+
+" neovim configuration
+"let g:python_host_prog = '/Users/ed/src/venv/neovim2/bin/python'
+"let g:python3_host_prog = '/Users/ed/src/venv/neovim3/bin/python'
