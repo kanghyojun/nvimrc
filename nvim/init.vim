@@ -27,11 +27,12 @@ Plug 'altercation/vim-colors-solarized'
 
 Plug 'scrooloose/syntastic'
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-Plug 'zchee/deoplete-jedi'
 Plug 'eagletmt/neco-ghc'
 Plug 'simnalamburt/vim-mundo'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'w0rp/ale'
+Plug 'spoqa/nirum.vim'
 
 call plug#end()
 
