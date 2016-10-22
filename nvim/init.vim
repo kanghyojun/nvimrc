@@ -1,4 +1,5 @@
 set nocompatible
+set termguicolors
 
 call plug#begin('~/.config/nvim/plugged')
 function! DoRemote(arg)
