@@ -61,8 +61,6 @@ command E Explore
 
 set noeb vb t_vb=
 
-let g:airline_powerline_fonts=1
-
 set directory=/tmp
 set colorcolumn=80
 
@@ -96,3 +94,21 @@ au FileType nirum       setl ts=4 sw=4 sts=4
 " neovim configuration
 "let g:python_host_prog = '/Users/ed/src/venv/neovim2/bin/python'
 "let g:python3_host_prog = '/Users/ed/src/venv/neovim3/bin/python'
+
+
+set bg=dark
+color material-theme
+
+let g:airline_theme='bubblegum'
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline_powerline_fonts=1
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.whitespace = 'Ξ'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.crypt = '🔒'
