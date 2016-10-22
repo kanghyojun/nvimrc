@@ -17,22 +17,17 @@ Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
 Plug 'othree/html5.vim'
 Plug 'lepture/vim-jinja'
-Plug 'cakebaker/scss-syntax.vim'
 Plug 'cespare/vim-toml'
-Plug 'pbrisbin/vim-syntax-shakespeare'
 
-"Plug 'dracula/vim'
-"Plug 'junegunn/seoul256.vim'
-Plug 'altercation/vim-colors-solarized'
+Plug 'jdkanani/vim-material-theme'
 
-Plug 'scrooloose/syntastic'
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-Plug 'eagletmt/neco-ghc'
 Plug 'simnalamburt/vim-mundo'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'w0rp/ale'
 Plug 'spoqa/nirum.vim'
+Plug 'junegunn/vim-slash'
 
 call plug#end()
 
@@ -40,8 +35,8 @@ filetype plugin indent on
 syntax on
 
 " Color configuration
-set bg=light
-color solarized
+set bg=dark
+color material-theme
 
 set tabstop=2 shiftwidth=2 softtabstop=2 modeline
 set fileformat=unix backspace=2
@@ -91,29 +86,9 @@ autocmd WinEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd WinEnter * match ExtraWhitespace2 /\s\+\%#/
 autocmd InsertLeave * match ExtraWhitespace /\s\+\%#\@<!$/
 
-"Haskell-related config
-let g:haskell_quasi         = 0
-let g:haskell_interpolation = 0
-let g:haskell_regex         = 0
-let g:haskell_jmacro        = 0
-let g:haskell_shqq          = 0
-let g:haskell_sql           = 0
-let g:haskell_json          = 0
-let g:haskell_xml           = 0
-let g:haskell_hsp           = 0
-" disable all conceals, including the simple ones like
-" lambda and composition
-let g:haskell_conceal              = 0
-" disable concealing of "enumerations": commatized lists like
-" deriving clauses and LANGUAGE pragmas,
-" otherwise collapsed into a single ellipsis
-let g:haskell_conceal_enumerations = 0
-
-set clipboard=unnamed
 set nofoldenable
 
 " nirum configuraiton
-au BufNewFile,BufRead *.nrm set filetype=nirum
 au FileType nirum       setl ts=4 sw=4 sts=4
 
 
