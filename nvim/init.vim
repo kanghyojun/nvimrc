@@ -8,6 +8,7 @@ endfunction
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+Plug 'isRuslan/vim-es6'
 Plug 'tpope/vim-fugitive'
 Plug 'rhysd/committia.vim'
 Plug 'davidhalter/jedi-vim'
