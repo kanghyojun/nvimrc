@@ -84,17 +84,7 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+\%#\@<!$/
 
 set nofoldenable
 
-" nirum configuraiton
-au FileType nirum       setl ts=4 sw=4 sts=4
-
-
 " neovim configuration
-"let g:python_host_prog = '/Users/ed/src/venv/neovim2/bin/python'
-"let g:python3_host_prog = '/Users/ed/src/venv/neovim3/bin/python'
-
-
-set bg=dark
-color material-theme
 
 let g:airline_theme='bubblegum'
 let g:airline_left_sep = ''
