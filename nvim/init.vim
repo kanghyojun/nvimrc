@@ -20,7 +20,7 @@ Plug 'cespare/vim-toml'
 Plug 'jdkanani/vim-material-theme'
 
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-Plug 'simnalamburt/vim-mundo'
+Plug 'zchee/deoplete-jedi'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'w0rp/ale'
@@ -47,7 +47,7 @@ au FileType html        setl ts=2 sw=2 sts=2
 au FileType haml        setl ts=2 sw=2 sts=2
 au FileType php         setl ts=2 sw=2 sts=2
 au FileType sql         setl ts=2 sw=2 sts=2
-au FileType javascript  setl ts=2 sw=2 sts=2
+au FileType javascript  setl ts=2 sw=2 sts=2 colorcolumn=120
 au FileType python      setl ts=4 sw=4 sts=4
 au FileType haskell     setl ts=8 sw=4 sts=4
 au FileType make        setl noet
@@ -63,7 +63,6 @@ set colorcolumn=80
 
 noremap <silent> nh :noh<CR>
 noremap <silent> tt :F<CR>
-nnoremap <F5> :MundoToggle<CR>
 
 let g:deoplete#enable_at_startup = 1
 
