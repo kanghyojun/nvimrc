@@ -16,6 +16,7 @@ Plug 'davidhalter/jedi-vim'
 Plug 'othree/html5.vim'
 Plug 'lepture/vim-jinja'
 Plug 'cespare/vim-toml'
+Plug 'metakirby5/codi.vim'
 
 Plug 'jdkanani/vim-material-theme'
 
@@ -60,9 +61,6 @@ set noeb vb t_vb=
 
 set directory=/tmp
 set colorcolumn=80
-
-noremap <silent> nh :noh<CR>
-noremap <silent> tt :F<CR>
 
 let g:deoplete#enable_at_startup = 1
 
