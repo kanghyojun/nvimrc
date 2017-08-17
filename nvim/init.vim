@@ -11,7 +11,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'isRuslan/vim-es6'
 Plug 'tpope/vim-fugitive'
 Plug 'rhysd/committia.vim'
-Plug 'davidhalter/jedi-vim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 Plug 'othree/html5.vim'
 Plug 'lepture/vim-jinja'
@@ -22,15 +22,14 @@ Plug 'leafgarland/typescript-vim'
 
 Plug 'jdkanani/vim-material-theme'
 
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-Plug 'zchee/deoplete-jedi'
-
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'w0rp/ale'
 Plug 'spoqa/nirum.vim'
+Plug 'rust-lang/rust.vim'
 Plug 'junegunn/vim-slash'
 
 Plug 'achimnol/python-syntax'
+Plug 'editorconfig/editorconfig-vim'
 
 call plug#end()
 
@@ -58,13 +57,17 @@ au FileType python      setl ts=4 sw=4 sts=4
 au FileType haskell     setl ts=8 sw=4 sts=4
 au FileType make        setl noet
 au FileType nirum       setl ts=4 sw=4 sts=4
+au Filetype rust        call SetRust()
+
+function SetRust()
+    ALEDisable
+endfunction
 
 set laststatus=2
 
 command E Explore
 
 set noeb vb t_vb=
-
 set directory=/tmp
 set colorcolumn=80
 
@@ -102,3 +105,14 @@ let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.whitespace = 'Ξ'
 let g:airline_symbols.linenr = '␤'
 let g:airline_symbols.crypt = '🔒'
+
+let python_highlight_all = 1
+
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
+
+let g:deoplete#enable_at_startup = 1
+
+let g:ale_linters = {
+\  'haskell': ['stack-build', 'hlint'],
+\}
