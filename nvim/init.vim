@@ -136,7 +136,7 @@ nmap <Leader>h :bprevious<CR>
 nmap <Leader>b :bprevious<CR>
 
 " Close the current buffer
-nmap <Leader>bq :bd #<CR>
+nmap <Leader>bq :bd <CR>
 
 " Show all open buffers and their status
 nmap <Leader>bl :ls<CR>
