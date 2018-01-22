@@ -115,4 +115,28 @@ let g:deoplete#enable_at_startup = 1
 
 let g:ale_linters = {
 \  'haskell': ['stack-build', 'hlint'],
+\  'javascript': ['tslint'],
 \}
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+set hidden
+
+" To open a new empty buffer
+" This replaces :tabnew which I used to bind to this mapping
+nmap <Leader>T :enew<CR>
+
+" Move to the next buffer
+nmap <Leader>l :bnext<CR>
+nmap <Leader>f :bnext<CR>
+
+" Move to the previous buffer
+nmap <Leader>h :bprevious<CR>
+nmap <Leader>b :bprevious<CR>
+
+" Close the current buffer
+nmap <Leader>bq :bd #<CR>
+
+" Show all open buffers and their status
+nmap <Leader>bl :ls<CR>
