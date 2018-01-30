@@ -140,3 +140,8 @@ nmap <Leader>bq :bd <CR>
 
 " Show all open buffers and their status
 nmap <Leader>bl :ls<CR>
+
+let g:fzf_action = {
+  \ 'ctrl-t': 'e',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
