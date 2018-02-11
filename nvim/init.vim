@@ -23,6 +23,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'jdkanani/vim-material-theme'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
 Plug 'spoqa/nirum.vim'
 Plug 'rust-lang/rust.vim'
