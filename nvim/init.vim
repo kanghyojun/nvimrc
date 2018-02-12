@@ -58,7 +58,13 @@ au FileType python      setl ts=4 sw=4 sts=4
 au FileType haskell     setl ts=8 sw=4 sts=4
 au FileType make        setl noet
 au FileType nirum       setl ts=4 sw=4 sts=4
-au Filetype rust        call SetRust()
+au Filetype rust        call ALEDisable
+au FileType typescript  call ALEDisable
+au FileType haskell     call deoplete#disable()
+
+au FileType markdown    setl spell spelllang=en_us
+au FileType rst    setl spell spelllang=en_us
+
 
 function SetRust()
     ALEDisable
@@ -67,12 +73,14 @@ endfunction
 set laststatus=2
 
 command E Explore
+command F FZF
+command B Buffers
 
 set noeb vb t_vb=
 set directory=/tmp
 set colorcolumn=80
 
-let g:deoplete#enable_at_startup = 1
+call deoplete#enable()
 
 inoremap <expr> <Tab> ((pumvisible())?("\<C-n>"):("<Tab>"))
 
