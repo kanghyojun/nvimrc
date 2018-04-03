@@ -32,6 +32,9 @@ Plug 'junegunn/vim-slash'
 Plug 'achimnol/python-syntax'
 Plug 'editorconfig/editorconfig-vim'
 
+Plug 'elmcast/elm-vim'
+Plug 'neovimhaskell/haskell-vim'
+
 call plug#end()
 
 filetype plugin indent on
@@ -56,17 +59,20 @@ au FileType javascript  setl ts=2 sw=2 sts=2 colorcolumn=120
 au FileType typescript  setl makeprg=tsc ts=4 sw=4 sts=4 colorcolumn=120
 au FileType python      setl ts=4 sw=4 sts=4
 au FileType haskell     setl ts=8 sw=4 sts=4
+au FileType elm         setl ts=4 sw=4 sts=4
 au FileType make        setl noet
 au FileType nirum       setl ts=4 sw=4 sts=4
-au Filetype rust        call ALEDisable
-au FileType typescript  call ALEDisable
-au FileType haskell     call deoplete#disable()
+au Filetype rust        call DisableLint()
+au FileType typescript  call DisableLint()
+au FileType python      call DisableLint()
 
 au FileType markdown    setl spell spelllang=en_us
 au FileType rst    setl spell spelllang=en_us
+au FileType java        call deoplete#disable()
+au FileType java        call DisableLint()
 
 
-function SetRust()
+function DisableLint()
     ALEDisable
 endfunction
 
@@ -83,19 +89,6 @@ set colorcolumn=80
 call deoplete#enable()
 
 inoremap <expr> <Tab> ((pumvisible())?("\<C-n>"):("<Tab>"))
-
-"Keep 80 columns.
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
-autocmd WinEnter * match OverLength /\%81v.\+/
-
-highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
-highlight ExtraWhitespace2 ctermbg=darkgreen guibg=darkgreen
-match ExtraWhitespace /\s\+\%#\@<!$/
-match ExtraWhitespace2 /\s\+\%#/
-autocmd WinEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd WinEnter * match ExtraWhitespace2 /\s\+\%#/
-autocmd InsertLeave * match ExtraWhitespace /\s\+\%#\@<!$/
 
 set nofoldenable
 
@@ -123,7 +116,7 @@ let g:airline#extensions#ale#enabled = 1
 let g:deoplete#enable_at_startup = 1
 
 let g:ale_linters = {
-\  'haskell': ['stack-build', 'hlint'],
+\  'haskell': ['stack-ghc-mod', 'hlint'],
 \  'javascript': ['tslint'],
 \}
 
@@ -154,3 +147,6 @@ let g:fzf_action = {
   \ 'ctrl-t': 'e',
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
+
+let g:elm_setup_keybindings = 0
+let g:elm_format_autosave = 1
