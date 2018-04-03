@@ -64,7 +64,6 @@ au FileType make        setl noet
 au FileType nirum       setl ts=4 sw=4 sts=4
 au Filetype rust        call DisableLint()
 au FileType typescript  call DisableLint()
-au FileType python      call DisableLint()
 
 au FileType markdown    setl spell spelllang=en_us
 au FileType rst    setl spell spelllang=en_us
