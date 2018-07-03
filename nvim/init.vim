@@ -8,6 +8,8 @@ endfunction
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+Plug 'jdkanani/vim-material-theme'
+
 Plug 'isRuslan/vim-es6'
 Plug 'tpope/vim-fugitive'
 Plug 'rhysd/committia.vim'
@@ -18,9 +20,6 @@ Plug 'lepture/vim-jinja'
 Plug 'cespare/vim-toml'
 Plug 'metakirby5/codi.vim'
 Plug 'leafgarland/typescript-vim'
-
-
-Plug 'jdkanani/vim-material-theme'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -63,12 +62,11 @@ au FileType elm         setl ts=4 sw=4 sts=4
 au FileType make        setl noet
 au FileType nirum       setl ts=4 sw=4 sts=4
 au Filetype rust        call DisableLint()
-au FileType typescript  call DisableLint()
-
 au FileType markdown    setl spell spelllang=en_us
 au FileType rst    setl spell spelllang=en_us
 au FileType java        call deoplete#disable()
 au FileType java        call DisableLint()
+au FileType json        setl ts=4 sw=4 sts=4
 
 
 function DisableLint()
@@ -85,9 +83,9 @@ set noeb vb t_vb=
 set directory=/tmp
 set colorcolumn=80
 
-call deoplete#enable()
 
 inoremap <expr> <Tab> ((pumvisible())?("\<C-n>"):("<Tab>"))
+inoremap <C-c> <Esc>
 
 set nofoldenable
 
@@ -106,21 +104,23 @@ let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.whitespace = 'Ξ'
 let g:airline_symbols.linenr = '␤'
 let g:airline_symbols.crypt = '🔒'
+"" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 let python_highlight_all = 1
 
-" Set this. Airline will handle the rest.
-let g:airline#extensions#ale#enabled = 1
-
-let g:deoplete#enable_at_startup = 1
-
+"Ale
+let g:ale_lint_delay = 'insert'
 let g:ale_linters = {
 \  'haskell': ['stack-ghc-mod', 'hlint'],
 \  'javascript': ['tslint'],
 \}
 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
+"deoplete
+call deoplete#enable()
+let g:deoplete#enable_at_startup = 1
 
 set hidden
 
