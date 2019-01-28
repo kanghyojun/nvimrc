@@ -68,5 +68,41 @@ let g:fzf_action = {
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
 
-let g:elm_setup_keybindings = 0
-let g:elm_format_autosave = 1
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+set laststatus=2
+
+inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("<C-j>"))
+inoremap <expr> <Tab> ((pumvisible())?("\<C-n>"):("<Tab>"))
+inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("<C-k>"))
+inoremap <C-c> <Esc>
+
+set nofoldenable
+
+"Indents
+set ts=4 sw=4 softtabstop=4 modeline
+set colorcolumn=80
+
+au FileType typescript setl ts=4 sw=4 sts=4 colorcolumn=120
+au FileType javascript setl ts=2 sw=2 sts=2 colorcolumn=120
+au FileType yaml       setl ts=2 sw=2 sts=2
+au FileType ruby        setl ts=2 sw=2 sts=2
+au FileType yaml        setl ts=2 sw=2 sts=2
+au FileType html        setl ts=2 sw=2 sts=2
+au FileType haml        setl ts=2 sw=2 sts=2
+au FileType php         setl ts=2 sw=2 sts=2
+au FileType sql         setl ts=2 sw=2 sts=2
+au FileType python      setl ts=4 sw=4 sts=4 completeopt-=preview
+au FileType haskell     setl ts=8 sw=4 sts=4
+au Filetype haskell     call DisableLint()
+au FileType elm         setl ts=4 sw=4 sts=4
+au FileType make        setl noet
+au FileType nirum       setl ts=4 sw=4 sts=4
+au Filetype rust        call DisableLint()
+au FileType markdown    setl spell spelllang=en_us
+au FileType rst    setl spell spelllang=en_us
+au FileType java        call DisableLint()
+au FileType json        setl ts=4 sw=4 sts=4
