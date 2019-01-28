@@ -2,38 +2,21 @@ set nocompatible
 set termguicolors
 
 call plug#begin('~/.config/nvim/plugged')
-function! DoRemote(arg)
-  UpdateRemotePlugins
-endfunction
+Plug 'editorconfig/editorconfig-vim' 
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
 Plug 'jdkanani/vim-material-theme'
-
-Plug 'isRuslan/vim-es6'
-Plug 'tpope/vim-fugitive'
-Plug 'rhysd/committia.vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-Plug 'othree/html5.vim'
-Plug 'lepture/vim-jinja'
-Plug 'cespare/vim-toml'
-Plug 'metakirby5/codi.vim'
-Plug 'leafgarland/typescript-vim'
-
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'w0rp/ale'
+
+Plug 'tpope/vim-fugitive'
+Plug 'rhysd/committia.vim'
+
+" Extra syntax highlighters
 Plug 'spoqa/nirum.vim'
+Plug 'leafgarland/typescript-vim'
 Plug 'rust-lang/rust.vim'
-Plug 'junegunn/vim-slash'
-
-Plug 'achimnol/python-syntax'
-Plug 'editorconfig/editorconfig-vim'
-
-Plug 'elmcast/elm-vim'
-Plug 'neovimhaskell/haskell-vim'
-
 call plug#end()
 
 filetype plugin indent on
@@ -56,8 +39,9 @@ au FileType php         setl ts=2 sw=2 sts=2
 au FileType sql         setl ts=2 sw=2 sts=2
 au FileType javascript  setl ts=2 sw=2 sts=2 colorcolumn=120
 au FileType typescript  setl makeprg=tsc ts=4 sw=4 sts=4 colorcolumn=120
-au FileType python      setl ts=4 sw=4 sts=4
+au FileType python      setl ts=4 sw=4 sts=4 completeopt-=preview
 au FileType haskell     setl ts=8 sw=4 sts=4
+au Filetype haskell     call DisableLint()
 au FileType elm         setl ts=4 sw=4 sts=4
 au FileType make        setl noet
 au FileType nirum       setl ts=4 sw=4 sts=4
@@ -86,6 +70,7 @@ set colorcolumn=80
 
 inoremap <expr> <Tab> ((pumvisible())?("\<C-n>"):("<Tab>"))
 inoremap <C-c> <Esc>
+inoremap <Leader>r :ALEGoToDefinition<CR>
 
 set nofoldenable
 
@@ -110,6 +95,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 let python_highlight_all = 1
+let g:jedi#completions_enabled = 0
 
 "Ale
 let g:ale_lint_delay = 'insert'
