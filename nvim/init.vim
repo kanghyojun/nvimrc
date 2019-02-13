@@ -72,6 +72,9 @@ let g:fzf_action = {
 let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
+"editorconfig-vim slow startup time.
+"Note: https://github.com/editorconfig/editorconfig-vim/issues/50
+let g:EditorConfig_core_mode = 'python_external'
 
 set laststatus=2
 
