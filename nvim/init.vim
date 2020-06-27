@@ -146,3 +146,4 @@ if executable('typescript-language-server')
 endif
 
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+let g:rustfmt_autosave = 1
