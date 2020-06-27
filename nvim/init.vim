@@ -11,13 +11,14 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'tpope/vim-fugitive'
 Plug 'rhysd/committia.vim'
-
 " Extra syntax highlighters
 Plug 'spoqa/nirum.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'rust-lang/rust.vim'
 Plug 'udalov/kotlin-vim'
+Plug 'hashivim/vim-terraform'
 
+" Autocomplete, Language Server
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/asyncomplete.vim'
@@ -146,4 +147,5 @@ if executable('typescript-language-server')
 endif
 
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+let g:terraform_fmt_on_save=1
 let g:rustfmt_autosave = 1
