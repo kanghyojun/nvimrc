@@ -40,7 +40,7 @@ set directory=/tmp
 
 command E Explore
 command F FZF
-command FA call fzf#run({'source': 'rg -l --no-ignore-vcs --hidden --iglob !.git ""', 'down': '20%'})
+command FA call fzf#vim#files(<q-args>, {'source': 'rg -l --no-ignore-vcs --hidden --iglob !.git ""', 'down': '20%'})
 command B Buffers
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
