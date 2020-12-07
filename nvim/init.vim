@@ -19,10 +19,13 @@ Plug 'udalov/kotlin-vim'
 Plug 'hashivim/vim-terraform'
 
 " Autocomplete, Language Server
-Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" Plug 'prabirshrestha/vim-lsp'
+" Plug 'prabirshrestha/async.vim'
+" Plug 'prabirshrestha/asyncomplete.vim'
+" Plug 'prabirshrestha/asyncomplete-lsp.vim'
+"
+"
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 filetype plugin indent on
@@ -148,6 +151,9 @@ if executable('typescript-language-server')
         \ })
 endif
 
-vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+vnoremap // "ly/\V<C-R>=escape(@l,'/\')<CR><CR>
+vnoremap ?? "ly:Rg <C-R>=escape(@l,'/\')<CR><CR>
+vnoremap ??? "ly:Rg! <C-R>=escape(@l,'/\')<CR><CR>
+
 let g:terraform_fmt_on_save=1
 let g:rustfmt_autosave = 1
