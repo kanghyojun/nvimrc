@@ -23,9 +23,10 @@ Plug 'hashivim/vim-terraform'
 " Plug 'prabirshrestha/async.vim'
 " Plug 'prabirshrestha/asyncomplete.vim'
 " Plug 'prabirshrestha/asyncomplete-lsp.vim'
-"
-"
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Extra util function
+Plug 'junegunn/vim-slash'
 call plug#end()
 
 filetype plugin indent on

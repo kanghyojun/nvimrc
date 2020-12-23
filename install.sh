@@ -7,4 +7,10 @@ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 nvim +PlugInstall +PlugUpdate +qa
-nvim +'CocInstall coc-tsserver' +'CocInstall coc-pyright' +qa
+nvim \
+    +'CocInstall coc-tsserver' \
+    +'CocInstall coc-diagnostic' \
+    +'CocInstall coc-eslint' \
+    +'CocInstall coc-jedi' \
+    +'CocInstall coc-json' \
+    +qa
