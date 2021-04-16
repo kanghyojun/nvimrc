@@ -122,6 +122,9 @@ au FileType make        setl noet
 au FileType nirum       setl ts=4 sw=4 sts=4
 au FileType json        setl ts=4 sw=4 sts=4
 
+au BufRead,BufNewFile *.pegjs setfiletype pegjs
+au FileType pegjs       setl ts=2 sw=2 sts=2 colorcolumn=120 syn=javascript
+
 " IMPORTANT: :help Ncm2PopupOpen for more information
 set completeopt=noinsert,menuone,noselect
 
