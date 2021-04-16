@@ -101,6 +101,9 @@ set nofoldenable
 "Indents
 set ts=4 sw=4 softtabstop=4 modeline
 set colorcolumn=80
+" Line numbers
+set nu
+set numberwidth=3
 
 au FileType typescript  setl ts=4 sw=4 sts=4 colorcolumn=120
 au FileType typescriptreact  setl syntax=typescript ts=4 sw=4 sts=4 colorcolumn=120
