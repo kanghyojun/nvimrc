@@ -5,7 +5,6 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'editorconfig/editorconfig-vim' 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'jdkanani/vim-material-theme'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
@@ -27,14 +26,16 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Extra util function
 Plug 'junegunn/vim-slash'
+
+Plug 'ayu-theme/ayu-vim'
 call plug#end()
 
 filetype plugin indent on
 syntax on
 
 " Color configuration
-set bg=dark
-color material-theme
+let ayucolor="mirage"
+colorscheme ayu
 
 set fileformat=unix backspace=2
 set autoindent smartindent expandtab
