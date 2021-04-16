@@ -18,10 +18,6 @@ Plug 'udalov/kotlin-vim'
 Plug 'hashivim/vim-terraform'
 
 " Autocomplete, Language Server
-" Plug 'prabirshrestha/vim-lsp'
-" Plug 'prabirshrestha/async.vim'
-" Plug 'prabirshrestha/asyncomplete.vim'
-" Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Extra util function
@@ -86,8 +82,16 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 set laststatus=2
 
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
 inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("<C-j>"))
-inoremap <expr> <Tab> ((pumvisible())?("\<C-n>"):("<Tab>"))
 inoremap <expr> <S-Tab> ((pumvisible())?("\<C-p>"):("\<S-Tab>"))
 inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("<C-k>"))
 inoremap <C-c> <Esc>
@@ -127,35 +131,18 @@ let g:EditorConfig_exec_path = '/usr/local/bin/editorconfig'
 
 set updatetime=1500
 
-if executable('pyls')
-    " pip install python-language-server
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'whitelist': ['python'],
-        \ })
-endif
-
-if executable('css-languageserver')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'css-languageserver',
-        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'css-languageserver --stdio']},
-        \ 'whitelist': ['scss', 'sass']
-        \ })
-endif
-
-if executable('typescript-language-server')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'typescript-language-server',
-        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
-        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
-        \ 'whitelist': ['typescript', 'typescriptreact'],
-        \ })
-endif
-
 vnoremap // "ly/\V<C-R>=escape(@l,'/\')<CR><CR>
 vnoremap ?? "ly:Rg <C-R>=escape(@l,'/\')<CR><CR>
 vnoremap ??? "ly:Rg! <C-R>=escape(@l,'/\')<CR><CR>
 
 let g:terraform_fmt_on_save=1
 let g:rustfmt_autosave = 1
+
+" GoTo code navigation.
+nmap <silent> gl <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+nmap <Leader>r :call CocAction('format')<CR>:w<CR>
+nmap <Leader>rn <Plug>(coc-rename)
